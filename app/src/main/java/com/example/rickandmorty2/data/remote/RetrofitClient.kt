@@ -27,7 +27,7 @@ class RetrofitClient {
         .client(okHttpClient)
         .build()
 
-    fun provideCharactersApiService() =
+    fun provideCharactersApiService(): CharacterApiService =
         retrofit.create(CharacterApiService::class.java)
 
 
@@ -36,7 +36,6 @@ class RetrofitClient {
 
     fun provideEpisodesApiService() =
         retrofit.create(EpisodeApiService::class.java)
-
 
 
 }

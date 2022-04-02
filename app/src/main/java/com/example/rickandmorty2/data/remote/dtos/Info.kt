@@ -2,7 +2,7 @@ package com.example.rickandmorty2.data.remote.dtos
 
 import com.google.gson.annotations.SerializedName
 
-data class Info (
+data class Info(
     @SerializedName("count")
     val count: Int,
     @SerializedName("next")
@@ -10,5 +10,5 @@ data class Info (
     @SerializedName("pages")
     val pages: Int,
     @SerializedName("prev")
-    val prev: Any
-        )
+    val prev: String
+)
