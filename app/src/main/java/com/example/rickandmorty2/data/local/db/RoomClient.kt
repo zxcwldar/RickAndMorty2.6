@@ -8,7 +8,7 @@ import com.example.rickandmorty2.data.local.db.daos.LocationDao
 
 class RoomClient {
     fun provideCreateAppDatabase(context: Context) = Room.databaseBuilder(
-    context, AppDatabase::class.java, "database-name"
+    context, AppDatabase::class.java, "database"
     ).fallbackToDestructiveMigration()
     .build()
 

@@ -2,7 +2,6 @@ package com.example.rickandmorty2.presentation.ui.fragments.location
 
 import android.content.Context
 import android.net.ConnectivityManager
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.rickandmorty2.R
@@ -11,18 +10,17 @@ import com.example.rickandmorty2.common.expensions.submitData
 import com.example.rickandmorty2.databinding.FragmentLocationBinding
 import com.example.rickandmorty2.presentation.ui.adapters.LocationAdapter
 import com.example.rickandmorty2.utils.PaginationScrollListener
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class LocationFragment : BaseFragment<FragmentLocationBinding, LocationViewModel>(
     R.layout.fragment_location
 ) {
     override val binding by viewBinding(FragmentLocationBinding::bind)
-    override val viewModel: LocationViewModel by viewModels()
+    override val viewModel: LocationViewModel by viewModel()
     private val locationAdapter = LocationAdapter()
 
     override fun setupObserver() {
-        subscribeToLocation()
+        subscribeToLocations()
         subscribeToLocationLocale()
     }
 
@@ -44,7 +42,7 @@ class LocationFragment : BaseFragment<FragmentLocationBinding, LocationViewModel
         })
     }
 
-    private fun subscribeToLocation() {
+    private fun subscribeToLocations() {
         viewModel.locationsState.observe(viewLifecycleOwner) {
             locationAdapter.submitData(it.results)
 
@@ -52,7 +50,7 @@ class LocationFragment : BaseFragment<FragmentLocationBinding, LocationViewModel
     }
 
     private fun subscribeToLocationLocale() {
-        viewModel.episodesLocaleState.observe(viewLifecycleOwner) {
+        viewModel.locationLocaleState.observe(viewLifecycleOwner) {
             locationAdapter.submitData(it)
         }
     }

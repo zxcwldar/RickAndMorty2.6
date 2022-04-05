@@ -10,7 +10,9 @@ import com.example.rickandmorty2.data.remote.dtos.episode.RickAndMortyEpisode
 import com.example.rickandmorty2.data.remote.dtos.location.RickAndMortyLocation
 
 @Database(
-    entities = [RickAndMortyCharacter::class, RickAndMortyEpisode::class, RickAndMortyLocation::class], version = 2
+    entities = [RickAndMortyCharacter::class, RickAndMortyEpisode::class, RickAndMortyLocation::class],
+    version = 2,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 

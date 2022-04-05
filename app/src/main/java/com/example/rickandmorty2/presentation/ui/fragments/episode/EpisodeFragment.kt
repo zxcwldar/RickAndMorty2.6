@@ -2,7 +2,6 @@ package com.example.rickandmorty2.presentation.ui.fragments.episode
 
 import android.content.Context
 import android.net.ConnectivityManager
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.rickandmorty2.R
@@ -11,15 +10,14 @@ import com.example.rickandmorty2.common.expensions.submitData
 import com.example.rickandmorty2.databinding.FragmentEpisodeBinding
 import com.example.rickandmorty2.presentation.ui.adapters.EpisodeAdapter
 import com.example.rickandmorty2.utils.PaginationScrollListener
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class EpisodeFragment : BaseFragment<FragmentEpisodeBinding, EpisodeViewModel>(
     R.layout.fragment_episode
 ) {
 
     override val binding by viewBinding(FragmentEpisodeBinding::bind)
-    override val viewModel: EpisodeViewModel by viewModels()
+    override val viewModel: EpisodeViewModel by viewModel()
     private val episodesAdapter = EpisodeAdapter()
 
     override fun setupViews() {
@@ -69,4 +67,3 @@ class EpisodeFragment : BaseFragment<FragmentEpisodeBinding, EpisodeViewModel>(
         return netInfo != null && netInfo.isConnectedOrConnecting
     }
 }
-

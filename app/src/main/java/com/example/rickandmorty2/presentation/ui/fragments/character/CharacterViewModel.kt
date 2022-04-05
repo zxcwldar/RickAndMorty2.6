@@ -6,11 +6,8 @@ import com.example.rickandmorty2.base.BaseViewModel
 import com.example.rickandmorty2.data.remote.dtos.RickAndMortyResponse
 import com.example.rickandmorty2.data.remote.dtos.character.RickAndMortyCharacter
 import com.example.rickandmorty2.data.repositories.CharacterRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class CharacterViewModel  @Inject constructor(
+class CharacterViewModel   constructor(
     private val repository: CharacterRepository,
 ) : BaseViewModel() {
 
@@ -19,6 +16,7 @@ class CharacterViewModel  @Inject constructor(
 
     private val _characterState = MutableLiveData<RickAndMortyResponse<RickAndMortyCharacter>>()
     val characterState: LiveData<RickAndMortyResponse<RickAndMortyCharacter>> = _characterState
+
 
     private val _characterLocaleState = MutableLiveData<List<RickAndMortyCharacter>>()
     val characterLocaleState: LiveData<List<RickAndMortyCharacter>> = _characterLocaleState
@@ -30,8 +28,11 @@ class CharacterViewModel  @Inject constructor(
             isLoading = false
         }
     }
-
+    init {
+        fetchCharacter()
+    }
     fun getCharacters() = repository.getCharacters().collect(_characterLocaleState, null)
+
 
 }
 

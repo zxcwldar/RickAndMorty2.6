@@ -13,6 +13,6 @@ data class RickAndMortyEpisode(
     val name: String,
     @SerializedName("air_date")
     val air_date: String,
-    @SerializedName("episodes")
+    @SerializedName("episode")
     val episode: String
 ) : BaseDiffModel

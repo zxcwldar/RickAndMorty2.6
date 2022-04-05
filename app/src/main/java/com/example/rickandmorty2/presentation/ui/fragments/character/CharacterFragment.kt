@@ -2,8 +2,6 @@ package com.example.rickandmorty2.presentation.ui.fragments.character
 
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.net.ConnectivityManager
-import android.util.Log
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -13,14 +11,13 @@ import com.example.rickandmorty2.common.expensions.submitData
 import com.example.rickandmorty2.databinding.FragmentCharacterBinding
 import com.example.rickandmorty2.presentation.ui.adapters.CharacterAdapter
 import com.example.rickandmorty2.utils.PaginationScrollListener
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class CharacterFragment : BaseFragment<FragmentCharacterBinding, CharacterViewModel>(
     R.layout.fragment_character
 ) {
     override val binding by viewBinding(FragmentCharacterBinding::bind)
-    override val viewModel: CharacterViewModel by viewModels()
+    override val viewModel: CharacterViewModel by viewModel()
     private val characterAdapter = CharacterAdapter(this::onItemClick)
 
     override fun setupViews() {
@@ -77,4 +74,3 @@ class CharacterFragment : BaseFragment<FragmentCharacterBinding, CharacterViewMo
         )
     }
 }
-
